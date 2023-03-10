@@ -16,14 +16,17 @@ func _physics_process(delta):
 		die()
 
 
-func _on_visible_on_screen_notifier_2d_screen_entered():
-	inplay = true
 
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	if inplay == true:
-		#print('dead')
-		queue_free()
 
 func die():
 	queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	inplay = true
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	if inplay == true:
+		#print('dead')
+		queue_free()
