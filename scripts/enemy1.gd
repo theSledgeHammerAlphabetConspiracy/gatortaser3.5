@@ -2,8 +2,10 @@ extends StaticBody2D
 
 var inplay: bool = false
 
-var life: int = 40
+var life: int = 90
 var speed: float = 1.2
+
+var shockon: bool = false
 
 func _ready():
 	pass # Replace with function body.
@@ -12,11 +14,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	move_local_x(speed*-1)
+	#if life <= 0:
+		#die()
+
+func shock():
+	#print(life)
+	life -= 1
+	if shockon == false:
+		shockon = true
+		$AnimationPlayer.play("shockOn")
+	#playshockedanim
 	if life <= 0:
 		die()
-
-
-
+		
 
 func die():
 	queue_free()
