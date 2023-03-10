@@ -1,0 +1,15 @@
+2a60927148abd1d33b818b535e306557
+::res://::1678413375
+enemy1.tscn::PackedScene::4005580009206566863::1678413371::0::1::::<><>::res://scripts/enemy1.gd<>uid://c4gbiu2w65kb7
+export_presets.cfg::TextFile::-1::1678412415::0::1::::<><>::
+icon.svg::CompressedTexture2D::963825810898328913::1678398742::1678398747::1::::<><>::
+main.tscn::PackedScene::1186008418023299623::1678413371::0::1::::<><>::res://scripts/main.gd<>res://scripts/scrolling.gd<>uid://ny5cnivovd2h<>res://scripts/character.gd<>uid://dqcpnkhrumgxw
+::res://scripts/::1678412066
+character.gd::GDScript::-1::1678412056::0::1::::<>CharacterBody2D<>::
+enemy1.gd::GDScript::-1::1678412066::0::1::::<>StaticBody2D<>::
+main.gd::GDScript::-1::1678406942::0::1::::<>Node2D<>::
+scrolling.gd::GDScript::-1::1678399771::0::1::::<>ParallaxBackground<>::
+::res://shit assets/::1678411891
+11242.png::CompressedTexture2D::8287346811854942140::1678403053::1678403081::1::::<><>::
+11912.png::CompressedTexture2D::6820780195976424138::1678411887::1678411891::1::::<><>::
+19428.png::CompressedTexture2D::3043436837870694873::1678403078::1678403081::1::::<><>::
