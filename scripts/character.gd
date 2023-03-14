@@ -35,18 +35,8 @@ func _physics_process(delta):
 			die()
 
 	if Input.is_action_just_pressed("shoot"):
-		if POTtazertarget.size() > 0:
-		#print(POTtazertarget)
-			if tazertarget.size() == 0:
-				#####this is the projectile script
-				tazertarget.append(POTtazertarget[0])
-				POTtazertarget.erase(POTtazertarget[0])
-			elif tazertarget.size() == 1:
-				tazertarget.append(POTtazertarget[0]) 
-				POTtazertarget.erase(POTtazertarget[0])
-		#if $lockOn.get_overlapping_bodies().size() >= 1:
-			#tazertarget.append($lockOn.get_overlapping_bodies()[])
-			#print($lockOn.get_overlapping_bodies())
+		shmupbutton()
+
 
 			
 func die():
@@ -64,3 +54,18 @@ func _on_lockOn_body_exited(body):
 	if body in tazertarget:
 		tazertarget.erase(body)
 		body.set_modulate(Color(1,1,1,1))
+		
+func shmupbutton():
+	if POTtazertarget.size() > 0:
+	#print(POTtazertarget)
+		if tazertarget.size() == 0:
+			#####this is the projectile script
+			tazertarget.append(POTtazertarget[0])
+			POTtazertarget.erase(POTtazertarget[0])
+		elif tazertarget.size() == 1:
+			tazertarget.append(POTtazertarget[0]) 
+			POTtazertarget.erase(POTtazertarget[0])
+	#if $lockOn.get_overlapping_bodies().size() >= 1:
+		#tazertarget.append($lockOn.get_overlapping_bodies()[])
+		#print($lockOn.get_overlapping_bodies())
+		
