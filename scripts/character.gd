@@ -61,7 +61,8 @@ func _on_lockOn_body_exited(body):
 		tazertarget.erase(body)
 
 		body.set_modulate(Color(1,1,1,1))
-		
+		body.get_node('AnimationPlayer').play('shockOff')
+		body.shockon = false
 func shmupbutton():
 	if POTtazertarget.size() > 0:
 	#print(POTtazertarget)
@@ -76,6 +77,5 @@ func shmupbutton():
 		#tazertarget.append($lockOn.get_overlapping_bodies()[])
 		#print($lockOn.get_overlapping_bodies())
 		
-		body.get_node('AnimationPlayer').play('shockOff')
-		body.shockon = false
+
 
