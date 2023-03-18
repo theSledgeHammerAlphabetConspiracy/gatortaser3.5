@@ -30,16 +30,18 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("shoot"):
 		shmupbutton()
-	
-func shoottaser(target):
-	var tazerproj = proj1.instance()
-	tazerproj.target = target.get_global_position()
-	#tazerproj.look_at(target.get_global_position())
-	tazerproj.user = self
-	tazerproj.set_global_position(get_global_position())
-	#tazerproj.speed = rand_range(1.2,2.4)
-	get_parent().add_child(tazerproj)
-	#print('character'+str(get_global_position()))
+		
+#
+#func shoottaser(target):
+#	print("shoottaser")
+#	var tazerproj = proj1.instance()
+#	tazerproj.target = target.get_global_position()
+#	#tazerproj.look_at(target.get_global_position())
+#	tazerproj.user = self
+#	tazerproj.set_global_position(get_global_position())
+#	#tazerproj.speed = rand_range(1.2,2.4)
+#	get_parent().add_child(tazerproj)
+#	#print('character'+str(get_global_position()))
 
 
 func attach(body):
@@ -61,10 +63,14 @@ func _on_lockOn_body_exited(body):
 		tazertarget.erase(body)
 
 		body.set_modulate(Color(1,1,1,1))
+		body.get_node('AnimationPlayer').play('shockOff')
+		body.shockon = false
+		
+		
 		
 func shmupbutton():
 	if POTtazertarget.size() > 0:
-	#print(POTtazertarget)
+		#print(POTtazertarget)
 		if tazertarget.size() == 0:
 			#####this is the projectile script
 			tazertarget.append(POTtazertarget[0])
@@ -76,6 +82,5 @@ func shmupbutton():
 		#tazertarget.append($lockOn.get_overlapping_bodies()[])
 		#print($lockOn.get_overlapping_bodies())
 		
-		body.get_node('AnimationPlayer').play('shockOff')
-		body.shockon = false
+
 

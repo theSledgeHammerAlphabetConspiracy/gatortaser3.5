@@ -6,6 +6,9 @@ var life: int = 90
 var speed: float = 1.2
 
 var shockon: bool = false
+onready var player = get_node('/root/main/player')
+
+var touch = true
 
 func _ready():
 	pass # Replace with function body.
@@ -17,6 +20,7 @@ func _physics_process(delta):
 	#if life <= 0:
 		#die()
 
+
 func shock():
 	#print(life)
 	life -= 1
@@ -24,11 +28,12 @@ func shock():
 		shockon = true
 		$AnimationPlayer.play("shockOn")
 	#playshockedanim
-	if life <= 0:
-		die()
-		
+#	if life <= 0:
+#		die()
+#
 
 func die():
+	#player.
 	queue_free()
 
 
@@ -40,3 +45,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	if inplay == true:
 		#print('dead')
 		queue_free()
+
+
+func _on_TouchScreenButton_pressed():
+	get_node('/root/main/player').touchattack(self)
