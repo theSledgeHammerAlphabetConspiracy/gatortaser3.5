@@ -14,29 +14,37 @@ var target1 = null
 var target2 = null
 
 func _physics_process(delta):
-#	print(tazertarget)
-#	if tazertarget.size() > 0:
-#
-#		for i in tazertarget.size():
-#			if tazertarget[i].life >= 1:
-#				#cool lazer code
-#				tazertarget[i].shock()
-#			else:
-#				tazertarget[i].die()
-#				tazertarget.remove(i)
 	if target1 != null:
-		if target1.life >= 1:
-				#cool lazer code
-			target1.shock()
+		if get_global_position().distance_to(target1.get_global_position()) <= 222:
+			if target1.life >= 1:
+				$shock1.look_at(target1.get_global_position())
+				$shock1.on = true
+				$shock1.distance = get_global_position().distance_to(target1.get_global_position())
+				target1.shock()
+			else:
+				$shock1.on = false
+				target1.die()
+				target1 = null
 		else:
-			target1.die()
+			$shock1.on = false
+			target1.get_node('AnimationPlayer').play('shockOff')
+			target1.shockon = false
 			target1 = null
 	if target2 != null:
-		if target2.life >= 1:
-				#cool lazer code
-			target2.shock()
+		if get_global_position().distance_to(target2.get_global_position()) <= 222:
+			if target2.life >= 1:
+				$shock2.look_at(target2.get_global_position())
+				$shock2.on = true
+				$shock2.distance = get_global_position().distance_to(target2.get_global_position())
+				target2.shock()
+			else:
+				$shock2.on = false
+				target2.die()
+				target2 = null
 		else:
-			target2.die()
+			$shock2.on = false
+			target2.get_node('AnimationPlayer').play('shockOff')
+			target2.shockon = false
 			target2 = null
 
 
@@ -62,6 +70,7 @@ func touchattack(touchtarget):
 		shoottaser(touchtarget,1)
 	elif target2 == null:
 		shoottaser(touchtarget,2)
+		
 func shoottaser(target,num):
 	var tazerproj = proj1.instance()
 	tazerproj.num = num
