@@ -14,6 +14,11 @@ config/name="Gatortaser 3 . 5"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
@@ -62,6 +67,10 @@ check={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_9="walls"
 
 [physics]
 

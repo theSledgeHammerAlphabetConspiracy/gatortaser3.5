@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy1 = preload('res://enemy1.tscn')
+var lazy = preload('res://objects/lazygator.tscn')
 
 var new_time: float = 0
 
@@ -17,7 +17,7 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	#print($spawnsystem/spawner.get_global_position())
-	var spawn = enemy1.instance()
+	var spawn = lazy.instance()
 	spawn.set_global_position($spawnsystem/spawner.get_global_position())
 	spawn.speed = rand_range(.6,1.2)
 	get_parent().add_child(spawn)

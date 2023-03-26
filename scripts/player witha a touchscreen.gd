@@ -15,7 +15,7 @@ var target2 = null
 
 func _physics_process(delta):
 	if target1 != null:
-		if get_global_position().distance_to(target1.get_global_position()) <= 222:
+		if get_global_position().distance_to(target1.get_global_position()) <= 252:
 			if target1.life >= 1:
 				$shock1.look_at(target1.get_global_position())
 				$shock1.on = true
@@ -31,7 +31,7 @@ func _physics_process(delta):
 			target1.shockon = false
 			target1 = null
 	if target2 != null:
-		if get_global_position().distance_to(target2.get_global_position()) <= 222:
+		if get_global_position().distance_to(target2.get_global_position()) <= 252:
 			if target2.life >= 1:
 				$shock2.look_at(target2.get_global_position())
 				$shock2.on = true
@@ -124,4 +124,18 @@ func die():
 #	#if $lockOn.get_overlapping_bodies().size() >= 1:
 #		#tazertarget.append($lockOn.get_overlapping_bodies()[])
 #		#print($lockOn.get_overlapping_bodies())
+		
+
+
+func _on_attackedRange_body_entered(body):
+	
+	if target1 == body:
+		return
+	elif target2 == body:
+		return
+	else:
+		body.attack(self)
+		
+		
+		
 		

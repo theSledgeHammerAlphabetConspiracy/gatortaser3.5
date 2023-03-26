@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://good assets/0035.png" type="Texture" id=2]
+[ext_resource path="res://good assets/0004.png" type="Texture" id=3]
+[ext_resource path="res://good assets/0036.png" type="Texture" id=4]
+[ext_resource path="res://good assets/0038.png" type="Texture" id=6]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 133.5, 180.5 )
+
+[node name="up" type="TouchScreenButton" parent="."]
+position = Vector2( -59.5, 142.5 )
+scale = Vector2( 4, 3 )
+normal = ExtResource( 2 )
+action = "up"
+
+[node name="down" type="TouchScreenButton" parent="."]
+position = Vector2( -59.5, 194.5 )
+scale = Vector2( 4, 3 )
+normal = ExtResource( 6 )
+action = "down"
+
+[node name="right" type="TouchScreenButton" parent="."]
+position = Vector2( 14.5, 194.5 )
+scale = Vector2( 4, 3 )
+normal = ExtResource( 4 )
+action = "right"
+
+[node name="left" type="TouchScreenButton" parent="."]
+position = Vector2( -134.5, 194.5 )
+scale = Vector2( 4, 3 )
+normal = ExtResource( 6 )
+action = "left"
+
+[node name="A" type="TouchScreenButton" parent="."]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 319, 194 )
+scale = Vector2( 4, 3 )
+normal = ExtResource( 3 )
+action = "ui_accept"
+
+[node name="control board" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 137.5, 214.5 )
+scale = Vector2( 8.5, 1 )
+z_index = -1
+texture = ExtResource( 1 )
