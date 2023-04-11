@@ -61,21 +61,25 @@ func _on_TouchScreenButton_pressed():
 	get_node('/root/main/player').touchattack(self)
 
 
-func attack(target):
-	$AnimationPlayer.play("attack")
-	#print(target.get_name())
-	var spawn = spit.instance()
-	spawn.set_global_position(get_global_position())
-	spawn.look_at(target.get_global_position())
-	#spawn.speed = rand_range(.6,1.2)
-	get_parent().add_child(spawn)
-	randomize()
-	#new_time = rand_range(.25,1.15)#1.15)
-	new_time = rand_range(3,10)
-	$Timer.set_wait_time(new_time)
-	$Timer.start()
+func attack(target):# might turn off when getin shocked
+	if shockon == false:
+		$AnimationPlayer.play("attack")
+		#print(target.get_name())
+		var spawn = spit.instance()
+		spawn.set_global_position(get_global_position())
+		spawn.look_at(target.get_global_position())
+		#spawn.speed = rand_range(.6,1.2)
+		get_parent().add_child(spawn)
+		randomize()
+		#new_time = rand_range(.25,1.15)#1.15)
+	#	new_time = rand_range(3,10)
+	#	$Timer.set_wait_time(new_time)
+	#	$Timer.start()
 
 
 func _on_Timer_timeout():
 	if get_parent().get_node("main/player"):
 		attack(get_parent().get_node("main/player"))
+		new_time = rand_range(3,10)
+		$Timer.set_wait_time(new_time)
+		$Timer.start()

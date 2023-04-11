@@ -5,7 +5,7 @@
 [ext_resource path="res://good assets/g/gator 2.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 51, 18 )
+extents = Vector2( 25.5, 18 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -225,7 +225,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 50, 20.5 )
+extents = Vector2( 25, 20.5 )
 
 [node name="Node2D" type="StaticBody2D" groups=["enemy"]]
 collision_layer = 3
@@ -234,7 +234,8 @@ script = ExtResource( 1 )
 SM = 1.0
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.6, 0.6 )
+self_modulate = Color( 0.247059, 0.192157, 0.192157, 1 )
+scale = Vector2( 0.3, 0.6 )
 texture = ExtResource( 3 )
 offset = Vector2( 5, -50 )
 hframes = 2
@@ -256,8 +257,8 @@ next/attack = "shockOff"
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( -46, -12 )
-scale = Vector2( 1.6, 0.55 )
+position = Vector2( -20, -12 )
+scale = Vector2( 0.8, 0.55 )
 normal = ExtResource( 2 )
 action = "check"
 

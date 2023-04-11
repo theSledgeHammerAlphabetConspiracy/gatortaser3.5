@@ -18,13 +18,16 @@ func _physics_process(delta):
 
 
 func _on_Timer_timeout():
+	randomize()
+	var type = randf()
 	#print($spawnsystem/spawner.get_global_position())
+	print(type)
 	var spawn = spitty.instance()
+	if type > .5:
+		spawn = lazy.instance()
 	spawn.set_global_position($spawnsystem/spawner.get_global_position())
 	spawn.speed = rand_range(.6,1.2)
 	get_parent().add_child(spawn)
-	
-	randomize()
 	#new_time = rand_range(.25,1.15)#1.15)
 	new_time = rand_range(3,10)
 	#print(new_time)
