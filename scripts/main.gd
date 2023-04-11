@@ -1,6 +1,8 @@
 extends Node2D
 
 var lazy = preload('res://objects/lazygator.tscn')
+var spitty = preload('res://objects/spittygator.tscn')
+
 
 var new_time: float = 0
 
@@ -17,15 +19,14 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	#print($spawnsystem/spawner.get_global_position())
-	var spawn = lazy.instance()
+	var spawn = spitty.instance()
 	spawn.set_global_position($spawnsystem/spawner.get_global_position())
 	spawn.speed = rand_range(.6,1.2)
 	get_parent().add_child(spawn)
 	
 	randomize()
-	#new_time = randf()
-	new_time = rand_range(.25,1.15)#1.15)
-	#new_time = rand_range(25,115)
+	#new_time = rand_range(.25,1.15)#1.15)
+	new_time = rand_range(3,10)
 	#print(new_time)
 	$spawnsystem/Timer.set_wait_time(new_time)
 	$spawnsystem/Timer.start()

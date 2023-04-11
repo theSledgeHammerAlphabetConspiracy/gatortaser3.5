@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scripts/enemy1.gd" type="Script" id=1]
+[ext_resource path="res://scripts/spittygator.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://good assets/g/gator 2.png" type="Texture" id=3]
 
@@ -79,22 +79,25 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 0 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:SM")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 5.5, 1.0 ]
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -229,7 +232,7 @@ extents = Vector2( 50, 20.5 )
 
 [node name="Node2D" type="StaticBody2D" groups=["enemy"]]
 collision_layer = 3
-collision_mask = 5
+collision_mask = 7
 script = ExtResource( 1 )
 SM = 1.0
 
@@ -250,9 +253,11 @@ shape = SubResource( 1 )
 autoplay = "shockOff"
 anims/RESET = SubResource( 2 )
 anims/attack = SubResource( 6 )
+anims/idle = SubResource( 7 )
 anims/shockOff = SubResource( 3 )
 anims/shockOn = SubResource( 4 )
-next/attack = "shockOff"
+next/attack = "idle"
+next/idle = "shockOff"
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -269,6 +274,10 @@ collision_mask = 0
 position = Vector2( 5, 3.5 )
 shape = SubResource( 5 )
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
