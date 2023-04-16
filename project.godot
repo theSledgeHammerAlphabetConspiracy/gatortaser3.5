@@ -26,6 +26,8 @@ config/icon="res://icon.png"
 
 [display]
 
+window/size/width=512
+window/size/height=300
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -91,4 +93,5 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.0745098, 0.231373, 0.654902, 1 )
 environment/default_environment="res://default_env.tres"

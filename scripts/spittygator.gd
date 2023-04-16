@@ -25,7 +25,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#move_local_x(speed*SM)
-	if position.x > 900:
+	#if position.x > 900:
+	if position.x > (get_viewport().size.x*.80):
 		#set_rotation(0)
 		move_local_x(-1.2)
 

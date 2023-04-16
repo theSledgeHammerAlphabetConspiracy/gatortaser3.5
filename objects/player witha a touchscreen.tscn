@@ -5,12 +5,13 @@
 [ext_resource path="res://objects/lightning.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 30, 15 )
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 120.0
+radius = 60.0
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 80.0
+radius = 60.0
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 210, 296 )
@@ -22,6 +23,8 @@ script = ExtResource( 1 )
 shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 3.5, -4.05312e-06 )
+scale = Vector2( 2.09677, 1.41667 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 11, 13, 31, 24 )

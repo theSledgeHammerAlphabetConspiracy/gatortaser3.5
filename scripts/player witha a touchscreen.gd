@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
 
-const SPEED: float = 4.0 #1.024 reso / new reso of 256 = 4
+#circle collision shape for ATTACKED range is 60 when reso is 512/300 and 80 when double
+
+const SPEED: float = 2.0 #1.024 reso / new reso of 256 = 4 speed 2 = reso 512/300
 const JUMP_VELOCITY = -400.0
 
 var tazertarget: Array = []
@@ -15,7 +17,7 @@ var target2 = null
 
 func _physics_process(delta):
 	if target1 != null:
-		if get_global_position().distance_to(target1.get_global_position()) <= 252:
+		if get_global_position().distance_to(target1.get_global_position()) <= 200:#252
 			if target1.life >= 1:
 				$shock1.look_at(target1.get_global_position())
 				$shock1.on = true
@@ -31,7 +33,7 @@ func _physics_process(delta):
 			target1.shockon = false
 			target1 = null
 	if target2 != null:
-		if get_global_position().distance_to(target2.get_global_position()) <= 252:
+		if get_global_position().distance_to(target2.get_global_position()) <= 200:#252
 			if target2.life >= 1:
 				$shock2.look_at(target2.get_global_position())
 				$shock2.on = true
@@ -50,12 +52,15 @@ func _physics_process(delta):
 
 	var velocity = Vector2(0,0)
 	
-	var direction = Vector2(Input.get_axis("ui_left", "ui_right"),Input.get_axis("ui_up", "ui_down"))
+	#var direction = Vector2(Input.get_axis("ui_left", "ui_right"),Input.get_axis("ui_up", "ui_down"))
+	var direction = Vector2( int(Input.is_action_pressed('ui_right'))-int(Input.is_action_pressed('ui_left')),
+	int(Input.is_action_pressed('ui_down'))-int(Input.is_action_pressed('ui_up')))
 	
 	if direction:
+		print(direction)
 		velocity = direction * SPEED
 	else:
-		velocity = Vector2(1,0) * .4
+		velocity = Vector2(1,0) * .2 #.2 at 512 reso
 	
 	var col = move_and_collide(velocity)
 	if col:
