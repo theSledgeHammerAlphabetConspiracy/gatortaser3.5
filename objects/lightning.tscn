@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://good assets/spark_06_rotated.png" type="Texture" id=1]
-[ext_resource path="res://good assets/ArmStandIn.png" type="Texture" id=2]
+[ext_resource path="res://good assets/brad/player/LeftArm.png" type="Texture" id=2]
 [ext_resource path="res://scripts/lightning.gd" type="Script" id=3]
 
 [sub_resource type="Shader" id=1]

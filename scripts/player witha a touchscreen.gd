@@ -15,6 +15,8 @@ var proj1 = preload('res://tazerproj.tscn')
 var target1 = null
 var target2 = null
 
+signal dead
+
 func _physics_process(delta):
 	if target1 != null:
 		if get_global_position().distance_to(target1.get_global_position()) <= 200:#252
@@ -57,7 +59,7 @@ func _physics_process(delta):
 	int(Input.is_action_pressed('ui_down'))-int(Input.is_action_pressed('ui_up')))
 	
 	if direction:
-		print(direction)
+		#print(direction)
 		velocity = direction * SPEED
 	else:
 		velocity = Vector2(1,0) * .2 #.2 at 512 reso
@@ -98,7 +100,14 @@ func attach(body,num):
 	
 	
 func die():
+	set_physics_process(false)
+	$AnimationPlayer.play("dead")
+	
+	
+func reset():
+	emit_signal('dead')
 	queue_free()
+	
 	
 	
 #func _on_lockOn_body_entered(body):
