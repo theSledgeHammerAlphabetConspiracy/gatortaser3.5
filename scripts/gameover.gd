@@ -17,6 +17,7 @@ func _ready():
 
 
 func _on_Button_pressed():
+	Score.score = 0
 	get_tree().change_scene("res://main.tscn")
 	#get_tree().reload_current_scene()
 
