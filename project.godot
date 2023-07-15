@@ -24,6 +24,10 @@ config/name="Gatortaser 3 . 5"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Score="*res://scripts/score.gd"
+
 [display]
 
 window/size/width=512

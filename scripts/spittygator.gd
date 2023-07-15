@@ -45,6 +45,8 @@ func shock():
 
 func die():
 	#player.
+	Score.score += 1
+	#print(Score.score)
 	queue_free()
 
 
@@ -79,8 +81,13 @@ func attack(target):# might turn off when getin shocked
 
 
 func _on_Timer_timeout():
-	if get_parent().get_node("main/player"):
-		attack(get_parent().get_node("main/player"))
+	if Score.player:
+		attack(Score.player)
 		new_time = rand_range(3,10)
 		$Timer.set_wait_time(new_time)
 		$Timer.start()
+	#if get_parent().get_node("main/player"):
+#		attack(get_parent().get_node("main/player"))
+#		new_time = rand_range(3,10)
+#		$Timer.set_wait_time(new_time)
+#		$Timer.start()

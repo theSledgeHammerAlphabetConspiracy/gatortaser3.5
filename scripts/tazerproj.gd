@@ -15,7 +15,7 @@ func _physics_process(delta):
 	move_local_x(20)
 	distance -= 1
 	if distance <= 0:
-		print(user.get_global_position().distance_to(get_global_position()))
+		#print(user.get_global_position().distance_to(get_global_position()))
 		queue_free()
 		
 	

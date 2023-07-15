@@ -46,6 +46,8 @@ func shock():
 
 func die():
 	#player.
+	Score.score += 1
+	print(Score.score)
 	queue_free()
 
 

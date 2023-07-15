@@ -17,6 +17,10 @@ var target2 = null
 
 signal dead
 
+
+func _ready():
+	Score.player = self
+
 func _physics_process(delta):
 	if target1 != null:
 		if get_global_position().distance_to(target1.get_global_position()) <= 200:#252
@@ -62,12 +66,12 @@ func _physics_process(delta):
 		#print(direction)
 		velocity = direction * SPEED
 	else:
-		velocity = Vector2(1,0) * .2 #.2 at 512 reso
+		velocity = Vector2(1,0) * .3 #.2 at 512 reso
 	
 	var col = move_and_collide(velocity)
-	if col:
-		if col.get_collider().is_in_group("enemy"):
-			die()
+#	if col:
+#		if col.get_collider().is_in_group("enemy"):
+#			die()
 	
 #	if Input.is_action_just_pressed("shoot"):
 #		shmupbutton()
@@ -153,3 +157,10 @@ func _on_attackedRange_body_entered(body):
 		
 		
 		
+
+
+func _on_VBox_body_entered(body):#layer 3
+	#print('f')
+	if body.is_in_group("enemy"):
+		print('ingroup')
+		die()

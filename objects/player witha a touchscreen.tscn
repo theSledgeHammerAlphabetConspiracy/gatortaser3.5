@@ -1,7 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/player witha a touchscreen.gd" type="Script" id=1]
-[ext_resource path="res://shit assets/11242.png" type="Texture" id=2]
 [ext_resource path="res://objects/lightning.tscn" type="PackedScene" id=3]
 [ext_resource path="res://good assets/brad/player/Hillbilly_Death3.png" type="Texture" id=4]
 [ext_resource path="res://good assets/brad/player/Hillbilly1.png" type="Texture" id=5]
@@ -9,7 +8,7 @@
 [ext_resource path="res://good assets/brad/player/Hillbilly2.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 30, 15 )
+extents = Vector2( 2, 1 )
 
 [sub_resource type="CircleShape2D" id=7]
 radius = 60.0
@@ -50,6 +49,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("shock1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("shock2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -92,6 +115,30 @@ tracks/2/keys = {
 "method": "reset"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("shock2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("shock1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "living"
@@ -121,10 +168,37 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("shock1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("shock2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 30, 15 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 210, 296 )
-collision_layer = 260
+collision_layer = 256
 collision_mask = 258
 script = ExtResource( 1 )
 
@@ -135,7 +209,6 @@ shape = SubResource( 4 )
 visible = false
 position = Vector2( 3.5, -4.05312e-06 )
 scale = Vector2( 2.09677, 1.41667 )
-texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 11, 13, 31, 24 )
 
@@ -173,6 +246,14 @@ anims/RESET = SubResource( 10 )
 anims/dead = SubResource( 11 )
 anims/living = SubResource( 12 )
 
+[node name="VBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBox"]
+shape = SubResource( 13 )
+
 [connection signal="body_entered" from="attackedRange" to="." method="_on_attackedRange_body_entered"]
+[connection signal="body_entered" from="VBox" to="." method="_on_VBox_body_entered"]
 
 [editable path="shock1"]
